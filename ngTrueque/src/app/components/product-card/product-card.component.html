@@ -1,1 +1,23 @@
-<p>product-card works!</p>
+<div class="product-card">
+    <div class="category-chips-full">
+      <span class="chip category">{{product.category}}</span>
+      <span class="chip subcategory">{{product.subcategory}}</span>
+    </div>
+    <button class="favorite-btn" (click)="toggleFavorite()" [attr.aria-label]="product.isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'">
+      <i class="fa" [ngClass]="{'fa-heart': product.isFavorite, 'fa-heart-o': !product.isFavorite}"></i>
+    </button>
+    <img [src]="product.imageUrl" [alt]="product.title" class="product-image">
+    <div class="product-info">
+      <h3 class="product-title">{{product.title}} <span class="product-location">- {{product.location}}</span></h3>
+      <p class="product-description">{{product.description}}</p>
+      <div class="product-owner">
+        <img [src]="product.owner.avatarUrl" [alt]="'Foto de perfil de ' + product.owner.name" class="owner-avatar">
+        <span class="owner-name">{{product.owner.name}}</span>
+        <div class="rating">
+          <span class="star" *ngFor="let star of [1,2,3,4,5]">{{star <= product.owner.rating ? '★' : '☆'}}</span>
+        </div>
+      </div>
+      <p class="product-looking-for"><strong>Busco:</strong> {{product.lookingFor}}</p>
+      <button (click)="makeOffer()" class="cta-button">Hacer Oferta</button>
+    </div>
+  </div>

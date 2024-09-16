@@ -1,2 +1,9 @@
-export class User {
-}
+export interface User {
+    id: string;
+    name: string;
+    email: string;
+    avatarUrl: string;
+    rating: number;
+    location: string;
+    joinDate: Date;
+  }
