@@ -1,0 +1,58 @@
+// Estructura de carpetas y archivos principales
+
+src/
+  app/
+    components/
+      header/
+        header.component.ts
+        header.component.html
+        header.component.css
+      nav/
+        nav.component.ts
+        nav.component.html
+        nav.component.css
+      hero/
+        hero.component.ts
+        hero.component.html
+        hero.component.css
+      features/
+        features.component.ts
+        features.component.html
+        features.component.css
+      product-card/
+        product-card.component.ts
+        product-card.component.html
+        product-card.component.css
+      product-grid/
+        product-grid.component.ts
+        product-grid.component.html
+        product-grid.component.css
+      recent-trades/
+        recent-trades.component.ts
+        recent-trades.component.html
+        recent-trades.component.css
+      filters/
+        filters.component.ts
+        filters.component.html
+        filters.component.css
+    services/
+      product.service.ts
+      trade.service.ts
+      user.service.ts
+    models/
+      product.model.ts
+      trade.model.ts
+      user.model.ts
+    app.module.ts
+    app.component.ts
+    app.component.html
+    app.component.css
+  assets/
+    images/
+  styles.css
+  index.html
+  main.ts
+
+angular.json
+package.json
+tsconfig.json
