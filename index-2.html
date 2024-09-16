@@ -1,0 +1,605 @@
+<html><head><base href="https://truequedelsur.ar/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mercado de Trueque Local - TruequeDelSur</title>
+<style>
+  :root {
+    --primary-color: #4CAF50;
+    --secondary-color: #FFC107;
+    --text-color: #333;
+    --background-color: #f4f4f4;
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  nav {
+    background-color: var(--secondary-color);
+    padding: 0.5rem;
+  }
+
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+  }
+
+  .hero {
+    background-image: url('community-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-content {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+    border-radius: 8px;
+    width:100%;
+  }
+  
+  .hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .cta-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cta-button:hover {
+    background-color: #45a049;
+  }
+  
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .feature {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    user-select: none;
+  }
+  
+  .recent-trades {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .trade-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .trade-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .trade-item:last-child {
+    border-bottom: none;
+  }
+  
+  .trade-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 1rem;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .product-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    position: relative;
+  }
+
+  .product-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .product-info {
+    padding: 1rem;
+  }
+
+  .product-title {
+    font-size: 1.2rem;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .product-description {
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .product-owner {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  .owner-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+  }
+
+  .owner-name {
+    font-weight: bold;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+
+  footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+
+  /* Estilos para filtros y búsquedas */
+  .filters {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .filters form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .filters select, .filters input[type="text"] {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+
+  .filters button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  /* Estilos para el sistema de valoración */
+  .rating {
+    display: inline-flex;
+    margin-left: 0.5rem;
+  }
+
+  .star {
+    color: #FFD700;
+    font-size: 1.2rem;
+  }
+
+  /* Estilos para el botón de favoritos */
+  .favorite-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .favorite-btn i {
+    color: #ff4d4d;
+    font-size: 1.2rem;
+  }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+  <header>
+    <h1>TruequeDelSur</h1>
+    <p>Intercambia productos y servicios en tu comunidad local</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#home">Inicio</a></li>
+      <li><a href="#products">Productos</a></li>
+      <li><a href="#services">Servicios</a></li>
+      <li><a href="#profile">Mi Perfil</a></li>
+      <li><a href="#messages">Mensajes</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h2>Bienvenido a TruequeDelSur</h2>
+        <p>Descubre una nueva forma de intercambiar bienes y servicios en tu comunidad</p>
+        <p>Comienza a explorar las ofertas disponibles o publica tus propios productos y servicios para intercambiar.</p>
+        <a href="#register" class="cta-button">Únete Ahora</a>
+      </div>
+    </section>
+    
+    <section class="filters">
+      <h2>Buscar y Filtrar</h2>
+      <form id="filter-form">
+        <select name="category" id="category">
+          <option value="">Todas las categorías</option>
+          <option value="electronica">Electrónica</option>
+          <option value="hogar">Hogar</option>
+          <option value="deportes">Deportes</option>
+          <option value="servicios">Servicios</option>
+        </select>
+        <select name="location" id="location">
+          <option value="">Todas las ubicaciones</option>
+          <option value="buenosaires">Buenos Aires</option>
+          <option value="cordoba">Córdoba</option>
+          <option value="rosario">Rosario</option>
+        </select>
+        <input type="text" name="search" id="search" placeholder="Buscar por palabra clave">
+        <button type="submit">Buscar</button>
+      </form>
+    </section>
+
+    <section class="features">
+      <div class="feature">
+        <div class="feature-icon">🔄</div>
+        <h3>Intercambios Locales</h3>
+        <p>Conecta con personas de tu área y realiza trueques de forma fácil y segura.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">💬</div>
+        <h3>Chat Integrado</h3>
+        <p>Negocia los términos del intercambio directamente a través de nuestra plataforma.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">⭐</div>
+        <h3>Sistema de Valoración</h3>
+        <p>Construye tu reputación y confía en otros usuarios basándote en sus valoraciones.</p>
+      </div>
+    </section>
+
+    <section id="featured-items">
+      <h2>Destacados</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <button class="favorite-btn" aria-label="Agregar a favoritos">
+            <i class="far fa-heart"></i>
+          </button>
+          <img src="https://page-images.websim.ai/Bicicleta%20vintage%20de%20color%20rojo_250x200xcBSjs1H7uQiB373Fuxdc4e0d0140a3.jpg" alt="Bicicleta vintage de color rojo" class="product-image" width="250" height="200">
+          <div class="product-info">
+            <h3 class="product-title">Bicicleta Vintage</h3>
+            <p class="product-description">Bicicleta restaurada en excelente estado. Ideal para paseos por la ciudad.</p>
+            <div class="product-owner">
+              <img src="https://page-images.websim.ai/Foto%20de%20perfil%20de%20Mar%C3%ADa_40x40xcBSjs1H7uQiB373Fuxcc88e34501e1d.jpg" alt="Foto de perfil de María" class="owner-avatar" width="40" height="40">
+              <span class="owner-name">María G.</span>
+              <div class="rating">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">☆</span>
+              </div>
+            </div>
+            <a href="#offer" class="cta-button">Hacer Oferta</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <button class="favorite-btn" aria-label="Agregar a favoritos">
+            <i class="far fa-heart"></i>
+          </button>
+          <img src="https://page-images.websim.ai/Guitarra%20ac%C3%BAstica%20y%20partituras_250x200xcBSjs1H7uQiB373Fux43eaabb844e8a.jpg" alt="Guitarra acústica y partituras" class="product-image" width="250" height="200">
+          <div class="product-info">
+            <h3 class="product-title">Clases de Guitarra</h3>
+            <p class="product-description">Ofrezco clases de guitarra para principiantes. 1 hora por semana.</p>
+            <div class="product-owner">
+              <img src="https://page-images.websim.ai/Foto%20de%20perfil%20de%20Carlos_40x40xcBSjs1H7uQiB373Fux0e62c610e54a5.jpg" alt="Foto de perfil de Carlos" class="owner-avatar" width="40" height="40">
+              <span class="owner-name">Carlos M.</span>
+              <div class="rating">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+              </div>
+            </div>
+            <a href="#offer" class="cta-button">Hacer Oferta</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <button class="favorite-btn" aria-label="Agregar a favoritos">
+            <i class="far fa-heart"></i>
+          </button>
+          <img src="https://page-images.websim.ai/Mueble%20de%20madera%20estilo%20vintage_250x200xcBSjs1H7uQiB373Fux6cea0c420870c.jpg" alt="Mueble de madera estilo vintage" class="product-image" width="250" height="200">
+          <div class="product-info">
+            <h3 class="product-title">Mueble Vintage</h3>
+            <p class="product-description">Hermoso mueble de los años 60 en perfecto estado. Ideal para sala de estar.</p>
+            <div class="product-owner">
+              <img src="https://page-images.websim.ai/Foto%20de%20perfil%20de%20Ana_40x40xcBSjs1H7uQiB373Fux3e35da930e27a.jpg" alt="Foto de perfil de Ana" class="owner-avatar" width="40" height="40">
+              <span class="owner-name">Ana L.</span>
+              <div class="rating">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">☆</span>
+                <span class="star">☆</span>
+              </div>
+            </div>
+            <a href="#offer" class="cta-button">Hacer Oferta</a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <button class="favorite-btn" aria-label="Agregar a favoritos">
+            <i class="far fa-heart"></i>
+          </button>
+          <img src="https://replicate.delivery/yhqm/z6fWppthUYV2Ma7BSW2f5IXJu9LCflp0YGRQf7K0xyD8V61NB/out-0.webp" alt="Set de herramientas de jardinería" class="product-image" width="250" height="200">
+          <div class="product-info">
+            <h3 class="product-title">Set de Jardinería</h3>
+            <p class="product-description">Completo set de herramientas para jardinería, poco uso.</p>
+            <div class="product-owner">
+              <img src="https://replicate.delivery/yhqm/6FGVuxDdBLqLLxjJuwNwXu09pk1FeTl5w3xqwAWXuzkvSvuJA/out-0.webp" alt="Foto de perfil de Pedro" class="owner-avatar" width="40" height="40">
+              <span class="owner-name">Pedro S.</span>
+              <div class="rating">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">☆</span>
+              </div>
+            </div>
+            <a href="#offer" class="cta-button">Hacer Oferta</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="recent-trades">
+      <h2>Intercambios Recientes</h2>
+      <ul class="trade-list">
+        <li class="trade-item">
+          <img src="https://replicate.delivery/yhqm/B0XcLO8ajKZsNFDNxxEiM4zfnWFDfLMbR86PUsQAsnGRae6mA/out-0.webp" alt="Avatar de Juan" class="trade-avatar" width="50" height="50">
+          <div>
+            <strong>Juan P.</strong> intercambió una bicicleta por un set de herramientas con <strong>Laura M.</strong>
+          </div>
+        </li>
+        <li class="trade-item">
+          <img src="https://page-images.websim.ai/Avatar%20de%20Sof%C3%ADa_1024x1024x1h8FE0eVZbzWPVbVfx95e2bacd8b123.jpg" alt="Avatar de Sofía" class="trade-avatar" width="50" height="50">
+          <div>
+            <strong>Sofía R.</strong> ofreció clases de yoga a cambio de lecciones de cocina de <strong>Miguel A.</strong>
+          </div>
+        </li>
+        <li class="trade-item">
+          <img src="https://page-images.websim.ai/Avatar%20de%20Diego_1024x1024x1h8FE0eVZbzWPVbVfxfb01493d54055.jpg" alt="Avatar de Diego" class="trade-avatar" width="50" height="50">
+          <div>
+            <strong>Diego L.</strong> intercambió un sofá por una mesa de comedor con <strong>Carla S.</strong>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 TruequeDelSur - Todos los derechos reservados</p>
+  </footer>
+
+  <script>
+    // Simulación de geolocalización
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        console.log("Geolocalización no soportada por este navegador.");
+      }
+    }
+
+    function showPosition(position) {
+      console.log("Latitud: " + position.coords.latitude +
+        " Longitud: " + position.coords.longitude);
+      // Aquí se podría hacer una llamada a un API para obtener productos cercanos
+    }
+
+    // Simulación de sistema de valoración
+    const ctaButtons = document.querySelectorAll('.cta-button');
+    ctaButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        const productTitle = e.target.closest('.product-card').querySelector('.product-title').textContent;
+        alert(`Has hecho una oferta por: ${productTitle}. ¡El dueño se pondrá en contacto contigo pronto!`);
+      });
+    });
+
+    // Llamada a la función de geolocalización cuando se carga la página
+    window.onload = getLocation;
+
+    // Animación simple para los iconos de características
+    const featureIcons = document.querySelectorAll('.feature-icon');
+    featureIcons.forEach(icon => {
+      icon.addEventListener('mouseover', () => {
+        icon.style.transform = 'scale(1.2)';
+        icon.style.transition = 'transform 0.3s ease';
+      });
+      icon.addEventListener('mouseout', () => {
+        icon.style.transform = 'scale(1)';
+      });
+    });
+
+    // Simulación de nuevos intercambios en tiempo real
+    function addNewTrade() {
+      const tradeList = document.querySelector('.trade-list');
+      const newTrade = document.createElement('li');
+      newTrade.className = 'trade-item';
+      newTrade.innerHTML = `
+        <img src="https://page-images.websim.ai/Avatar%20de%20Diego_1024x1024x1h8FE0eVZbzWPVbVfxfb01493d54055.jpg" alt="Avatar de nuevo usuario" class="trade-avatar" width="50" height="50">
+        <div>
+          <strong>Nuevo Usuario</strong> acaba de unirse y está buscando intercambiar libros por plantas.
+        </div>
+      `;
+      newTrade.style.opacity = '0';
+      tradeList.insertBefore(newTrade, tradeList.firstChild);
+      setTimeout(() => {
+        newTrade.style.transition = 'opacity 1s ease';
+        newTrade.style.opacity = '1';
+      }, 100);
+      if (tradeList.children.length > 5) {
+        tradeList.removeChild(tradeList.lastChild);
+      }
+    }
+
+    // Simular nuevos intercambios cada 30 segundos
+    setInterval(addNewTrade, 30000);
+
+    // Funcionalidad de filtros y búsqueda
+    const filterForm = document.getElementById('filter-form');
+    filterForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const category = document.getElementById('category').value;
+      const location = document.getElementById('location').value;
+      const searchTerm = document.getElementById('search').value;
+      
+      console.log(`Filtrando por: Categoría: ${category}, Ubicación: ${location}, Búsqueda: ${searchTerm}`);
+      // Aquí iría la lógica para filtrar los resultados basados en estos valores
+      alert('Filtros aplicados. Los resultados se actualizarían en una implementación real.');
+    });
+
+    // Funcionalidad de favoritos
+    const favoriteBtns = document.querySelectorAll('.favorite-btn');
+    favoriteBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const icon = btn.querySelector('i');
+        if (icon.classList.contains('far')) {
+          icon.classList.remove('far');
+          icon.classList.add('fas');
+          alert('Producto añadido a favoritos');
+        } else {
+          icon.classList.remove('fas');
+          icon.classList.add('far');
+          alert('Producto eliminado de favoritos');
+        }
+      });
+    });
+
+    // Simulación de sistema de valoración después de un intercambio
+    function simulateRating() {
+      alert('¡Intercambio completado! Por favor, valora tu experiencia con el otro usuario.');
+      const rating = prompt('Califica del 1 al 5 estrellas:');
+      if (rating && rating >= 1 && rating <= 5) {
+        alert(`Has valorado al usuario con ${rating} estrellas. ¡Gracias por tu feedback!`);
+      } else {
+        alert('Valoración no válida. Por favor, intenta de nuevo más tarde.');
+      }
+    }
+
+    // Simular una valoración después de hacer clic en "Hacer Oferta"
+    ctaButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        setTimeout(simulateRating, 3000); // Simula el proceso de intercambio y luego pide la valoración
+      });
+    });
+  </script>
+</body>
+</html>
